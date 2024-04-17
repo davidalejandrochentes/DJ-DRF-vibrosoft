@@ -52,7 +52,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Bienvenido a VibroSoft",
     "copyright": "T3D Design Company",
     "topmenu_links": [
-        {"name": "Home",  "url": "home"},
+        {"name": "Inicio",  "url": "home"},
     ],
 }
 
