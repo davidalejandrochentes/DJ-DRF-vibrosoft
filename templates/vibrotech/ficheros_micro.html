@@ -1,0 +1,73 @@
+{% extends "layout/base.html" %}
+
+{% block 'refresh' %}<meta http-equiv="refresh" content="60">{% endblock %}
+{% block 'title' %}ficheros micro{% endblock %}
+
+{% block 'content' %}
+    <div class="p-5">
+        <div class="d-flex justify-content-between">
+            <a href="{% url "home" %}" class="text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5"/>
+                </svg>
+            </a>
+            <div>
+                <button type="button" class="btn btn-success btn-sm mb-3">Almacenamiento total de {{ micro.nombre }} es de {{ total_bytes_gb }}Gb, libres {{ free_bytes_gb }}Gb y en uso {{ used_bytes_mb }}Mb</button>
+                <button type="button" onclick="window.location.href='{% url 'descargar_archivos' micro.id %}'" class="btn btn-secondary btn-sm mb-3 ms-2">Descargar todos</button>
+                {% if user.is_superuser %}
+                    <button type="button" class="btn btn-primary btn-sm mb-3 ms-2" data-bs-toggle="collapse" data-bs-target="#collapseModificar" aria-expanded="false" aria-controls="collapseModificar">Configurar dispositivo</button>
+                    <button type="button" class="btn btn-danger btn-sm mb-3 ms-2" data-bs-toggle="collapse" data-bs-target="#collapseEliminar" aria-expanded="false" aria-controls="collapseEliminar">Eliminar datos</button>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="collapse mb-2" id="collapseModificar">
+            <div class="card card-body ps-5 pe-5">
+                <form method="POST" action="{% url 'update_config' micro.id %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="samples" class="form-label">Muestras x fichero:</label>
+                        <input type="text" class="form-control" id="samples" name="samples" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">Definir intervalo en:</label>
+                        <select class="form-select" id="time" name="time" aria-label="Default select example">
+                            <option value="1">Segundos</option>
+                            <option value="60">Minutos</option>
+                            <option value="3600">Horas</option>
+                            <option value="86400">Días</option>
+                        </select>                                               
+                    </div>
+                    <div class="mb-3">
+                        <label for="interval" class="form-label">Intervalo:</label>
+                        <input type="text" class="form-control" id="interval" name="interval" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm mb-3">Guardar configuración</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="collapse mb-2" id="collapseEliminar">
+            <div class="card card-body ps-5 pe-5">
+                <p class="text-center">Esta seguro de que decea eliminar los archivos de {{ micro.nombre }}, una ves eliminados no se podran restaurar</p>
+                <button type="button" class="btn btn-danger btn-sm mb-3 ms-2">Eliminar datos</button>
+            </div>
+        </div>
+
+        <table class="table table-striped border shadow-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for archivo in archivos %}
+                <tr>
+                    <td><a class="text-dark" href="{% url 'ver_contenido_archivo' micro.id archivo %}">{{ archivo }}</a></td>
+                </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

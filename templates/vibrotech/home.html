@@ -1,0 +1,60 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %}Home{% endblock %}
+
+{% block 'content' %}
+    <div class="border-bottom p-5">
+        <button type="button" class="btn btn-success btn-sm mb-3">Dispositivos en funcioanamiento:</button>
+        {% for dispositivo in dispositivos_disponibles %}
+        {% empty %}
+            <p>No hay dispositivos en funcioanamiento.</p>
+        {% endfor %}
+
+        <table class="table table-striped border shadow-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">localidad</th>
+                    <th scope="col">descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dispositivo in dispositivos_disponibles %}
+                <tr>
+                    <td><a class="text-dark" href="{% url "ficheros_micro" id=dispositivo.id %}">{{ dispositivo.nombre }}</a></td>
+                    <td>{{ dispositivo.localidad }}</td>
+                    <td>{{ dispositivo.descripción }}</td>
+                </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="border-bottom p-5">
+        <button type="button" class="btn btn-danger btn-sm mb-3">Dispositivos fuera de servicio:</button>
+        {% for dispositivo in dispositivos_sin_respuesta_ok %}
+        {% empty %}
+            <p>Todos los dispositivos obtuvieron una respuesta 200 OK.</p>
+        {% endfor %}
+
+        <table class="table table-striped border shadow-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">localidad</th>
+                    <th scope="col">descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dispositivo in dispositivos_sin_respuesta_ok %}
+                <tr>
+                    <td>{{ dispositivo.nombre }}</td>
+                    <td>{{ dispositivo.localidad }}</td>
+                    <td>{{ dispositivo.descripción }}</td>
+                </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

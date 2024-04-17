@@ -1,0 +1,26 @@
+{% extends "layout/base.html" %}
+
+{% block 'title' %}{{ archivo.file_name }}{% endblock %}
+
+{% block 'content' %}
+    <div class="p-5">
+        <div class="d-flex justify-content-between">
+            <a href="{{ request.META.HTTP_REFERER }}" class="text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5"/>
+                </svg>
+            </a>
+            <div class="d-flex">
+                <button type="button" class="btn btn-success btn-sm mb-3">Contenido</button>
+                <form action="{% url 'descargar_archivo' micro.id archivo.file_name %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary btn-sm mb-3 ms-2">Descargar fichero</button>
+                </form>
+                {% if user.is_superuser %}
+                    <button type="button" class="btn btn-danger btn-sm mb-3 ms-2">Eliminar fichero</button>
+                {% endif %}
+            </div>
+        </div>
+        <pre>{{ archivo.file_content }}</pre>
+    </div>
+{% endblock %}
