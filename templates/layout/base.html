@@ -73,6 +73,11 @@
                     </div>
                     <div class="info">
                         <a href="" class="d-block" style="text-decoration: none;">{{ user }}</a>
+                        {% if user.is_superuser %}
+                            <p class="text-secondary">Usted es Súper-Usuario</p>
+                        {% else %} 
+                            <p class="text-secondary">Usted no es Súper-Usuario</p>
+                        {% endif %}    
                     </div>
                 </div>
                 <nav class="mt-2">
