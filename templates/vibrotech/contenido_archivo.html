@@ -11,7 +11,7 @@
                 </svg>
             </a>
             <div class="d-flex">
-                <button type="button" class="btn btn-success btn-sm mb-3">Contenido</button>
+                <button type="button" class="btn btn-success btn-sm mb-3">Nombre del fichero: <b>{{ nombre_archivo }}</b></button>
                 <form action="{% url 'descargar_archivo' micro.id archivo.file_name %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-primary btn-sm mb-3 ms-2">Descargar fichero</button>

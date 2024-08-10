@@ -12,7 +12,7 @@
                 </svg>
             </a>
             <div>
-                <button type="button" class="btn btn-success btn-sm mb-3">Almacenamiento total de {{ micro.nombre }} es de {{ total_bytes_gb }}Gb, libres {{ free_bytes_gb }}Gb y en uso {{ used_bytes_mb }}Mb</button>
+                <button type="button" class="btn btn-success btn-sm mb-3">Almacenamiento total de <b>{{ micro.nombre }}</b> es de {{ total_bytes_gb }}Gb, libres {{ free_bytes_gb }}Gb y en uso {{ used_bytes_mb }}Mb</button>
                 <button type="button" onclick="window.location.href='{% url 'descargar_archivos' micro.id %}'" class="btn btn-secondary btn-sm mb-3 ms-2">Descargar todos</button>
                 {% if user.is_superuser %}
                     <button type="button" class="btn btn-primary btn-sm mb-3 ms-2" data-bs-toggle="collapse" data-bs-target="#collapseModificar" aria-expanded="false" aria-controls="collapseModificar">Configurar dispositivo</button>

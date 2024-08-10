@@ -83,7 +83,7 @@ def ver_contenido_archivo(request, id, nombre_archivo):
         response = requests.get(f"{micro.url}/file?file={nombre_archivo}")
         if response.status_code == 200:
             data = response.json()
-            return render(request, 'vibrotech/contenido_archivo.html', {'micro': micro, 'archivo': data})
+            return render(request, 'vibrotech/contenido_archivo.html', {'micro': micro, 'archivo': data, 'nombre_archivo': nombre_archivo})
         else:
             return render(request, 'vibrotech/error.html', {'mensaje': 'No se pudo obtener el contenido del archivo'})
     except Exception as e:
