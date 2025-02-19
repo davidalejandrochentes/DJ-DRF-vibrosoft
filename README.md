@@ -72,9 +72,5 @@ vibrosoft/
 
 ¡Las contribuciones, problemas y solicitudes de funciones son bienvenidas!
 
-## Licencia 
-
-[Tu Licencia Aquí]
-
 ---
 Hecho con  usando Django y Python
