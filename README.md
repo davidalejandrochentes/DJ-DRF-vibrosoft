@@ -2,11 +2,24 @@
 
 VibroSoft es una aplicación web desarrollada con Django, diseñada para monitorear, gestionar y extraer datos de dispositivos de adquisición remotos (como microcontroladores o sensores) a través de una interfaz web intuitiva y una API REST.
 
-El sistema permite a los usuarios registrados visualizar el estado de los dispositivos, explorar los archivos de datos que generan, descargarlos individualmente o en lote, y configurar parámetros de medición de forma remota.
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/Django-5.0-green.svg)](https://www.djangoproject.com/)
+[![Django REST Framework](https://img.shields.io/badge/Djangorest-3.15-red.svg)](https://www.django-rest-framework.org/)
 
-[![Python](https.img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
-[![Django](https.img.shields.io/badge/Django-5.0-green.svg)](https://www.djangoproject.com/)
-[![Django REST Framework](https.img.shields.io/badge/Djangorest-3.15-red.svg)](https://www.django-rest-framework.org/)
+## 🏛️ Contexto y Reconocimiento
+
+Este proyecto es el resultado de una colaboración académico-industrial, desarrollado para el **Grupo de Análisis y Procesamiento de Señales (GAPS)** de la Universidad Tecnológica de La Habana (CUJAE). Nace como una solución a la necesidad de sistemas de monitoreo y diagnóstico industrial en Cuba, permitiendo la gestión remota de módulos de adquisición de datos desde cualquier parte del mundo mediante comunicación HTTP.
+
+Actualmente, Vibrosoft es utilizado por el grupo GAPS para sus investigaciones en el análisis de señales de vibración.
+
+El proyecto fue presentado y reconocido en la **Convención Científica Internacional de Ingeniería y Arquitectura**, celebrada en el Palacio de las Convenciones de La Habana el 28 de noviembre de 2024, destacando su innovación en el campo de los sistemas de adquisición de datos.
+
+### 📸 Presentación en la Convención
+
+<p align="center">
+  <img src="img/expo.webp" width="49%">
+  <img src="img/expo-2.webp" width="49%">
+</p>
 
 ## ✨ Características Principales
 
@@ -20,9 +33,9 @@ El sistema permite a los usuarios registrados visualizar el estado de los dispos
 
 ## 🚀 Tecnologías Utilizadas
 
-*   **Backend**: Django, Django REST Framework
+*   **Backend**: Django, Django REST Framework, PostgreSQL
 *   **Frontend**: Django Templates, HTML5, CSS3, Bootstrap
-*   **Base de Datos**: SQLite 3 (por defecto)
+*   **Base de Datos**: SQLite 3 (desarrollo), PostgreSQL (producción)
 *   **Comunicación HTTP**: Biblioteca `requests` para interactuar con los dispositivos.
 *   **Admin**: `django-jazzmin` para una experiencia de administración mejorada.
 
