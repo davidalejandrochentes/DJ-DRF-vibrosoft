@@ -1,76 +1,101 @@
-# VibroSoft 
+# VibroSoft: Plataforma de Gestión de Dispositivos Remotos
 
-## Descripción
-VibroSoft es una aplicación API REST basada en Django diseñada para manejar datos de series temporales con enfoque en la gestión de marcas de tiempo. El proyecto está especialmente diseñado para interactuar con dispositivos físicos de medición, recibiendo y procesando datos en tiempo real de estos equipos. La aplicación proporciona endpoints para registrar y recuperar información de fecha y hora, permitiendo un monitoreo efectivo y visualización de los datos recopilados por los dispositivos, haciéndolo ideal para aplicaciones de monitoreo industrial y registro de mediciones.
+VibroSoft es una aplicación web desarrollada con Django, diseñada para monitorear, gestionar y extraer datos de dispositivos de adquisición remotos (como microcontroladores o sensores) a través de una interfaz web intuitiva y una API REST.
 
-## Características 
+El sistema permite a los usuarios registrados visualizar el estado de los dispositivos, explorar los archivos de datos que generan, descargarlos individualmente o en lote, y configurar parámetros de medición de forma remota.
 
-- Endpoints API REST para gestión de fecha y hora
-- Registro automático de marcas de tiempo
-- Formato de respuesta JSON
-- Construido con Django y Django REST Framework
-- Interfaz de administración moderna usando Django Jazzmin
-- Base de datos SQLite para almacenamiento
+[![Python](https.img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![Django](https.img.shields.io/badge/Django-5.0-green.svg)](https://www.djangoproject.com/)
+[![Django REST Framework](https.img.shields.io/badge/Djangorest-3.15-red.svg)](https://www.django-rest-framework.org/)
 
-## Tecnologías Utilizadas 
+## ✨ Características Principales
 
-- Python 3.x
-- Django 5.1.5
-- Django REST Framework 3.15.2
-- Django Jazzmin 3.0.1
-- CoreAPI para documentación de API
-- SQLite como base de datos
+*   **Gestión Remota de Dispositivos**: Comprueba el estado (en línea / fuera de línea) de múltiples dispositivos desde un panel central.
+*   **Explorador de Archivos**: Navega por los archivos de datos almacenados en cada dispositivo remoto.
+*   **Visualización y Descarga de Datos**: Visualiza el contenido de los archivos de texto directamente en el navegador y descárgalos en formato `.txt` o como un archivo `.zip` consolidado.
+*   **Configuración Remota**: Actualiza los parámetros de muestreo e intervalo de los dispositivos a través de un formulario web.
+*   **API REST para Ingesta de Datos**: Un endpoint simple para que los dispositivos registren marcas de tiempo en el servidor.
+*   **Autenticación de Usuarios**: Sistema de login para proteger el acceso a la plataforma.
+*   **Panel de Administración Moderno**: Interfaz de administración mejorada y amigable gracias a `Django Jazzmin`.
 
-## Instalación 
+## 🚀 Tecnologías Utilizadas
 
-1. Clonar el repositorio
+*   **Backend**: Django, Django REST Framework
+*   **Frontend**: Django Templates, HTML5, CSS3, Bootstrap
+*   **Base de Datos**: SQLite 3 (por defecto)
+*   **Comunicación HTTP**: Biblioteca `requests` para interactuar con los dispositivos.
+*   **Admin**: `django-jazzmin` para una experiencia de administración mejorada.
+
+## ⚙️ Instalación y Puesta en Marcha
+
+Sigue estos pasos para tener una copia local del proyecto funcionando.
+
+**1. Clonar el repositorio**
 ```bash
-git clone [url-de-tu-repositorio]
-cd vibrosoft
+git clone https://github.com/tu-usuario/DJ-DRF-vibrosoft.git
+cd DJ-DRF-vibrosoft
 ```
 
-2. Crear y activar un entorno virtual
+**2. Crear y activar un entorno virtual**
 ```bash
+# Para Linux/macOS
+python3 -m venv venv
+source venv/bin/activate
+
+# Para Windows
 python -m venv venv
-source venv/bin/activate  # En Windows usar: venv\Scripts\activate
+venv\Scripts\activate
 ```
 
-3. Instalar dependencias
+**3. Instalar las dependencias**
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Ejecutar migraciones
+**4. Aplicar las migraciones de la base de datos**
 ```bash
 python manage.py migrate
 ```
 
-5. Iniciar el servidor de desarrollo
+**5. Crear un superusuario**
+Este usuario te permitirá acceder al panel de administración y a la aplicación web.
+```bash
+python manage.py createsuperuser
+```
+
+**6. Iniciar el servidor de desarrollo**
 ```bash
 python manage.py runserver
 ```
+La aplicación estará disponible en `http://127.0.0.1:8000`.
 
-## Endpoints de la API 
+## 📋 Uso de la Aplicación
 
-- `GET /api/datetime/` - Obtener todos los registros de tiempo
-- `POST /api/datetime/` - Crear un nuevo registro de tiempo
-- `GET /api/obtener-fecha-hora/` - Obtener fecha y hora actual
+1.  **Inicia sesión**: Accede a `http://127.0.0.1:8000/login/` y utiliza las credenciales del superusuario creado.
+2.  **Añade un dispositivo**:
+    *   Ve al panel de administración: `http://127.0.0.1:8000/admin/`.
+    *   En la sección "VIBROTECH", haz clic en "Añadir" junto a "Dispositivos".
+    *   Rellena los campos, especialmente el **nombre** y la **URL** base del dispositivo (ej: `http://192.168.1.105`).
+    *   Asegúrate de marcar la casilla **"Activo"**.
+3.  **Gestiona tus dispositivos**: Vuelve a la página principal (`http://127.0.0.1:8000/`) para ver los dispositivos activos y empezar a interactuar con ellos.
 
-## Estructura del Proyecto 
+## 📁 Estructura del Proyecto
 
 ```
-vibrosoft/
-├── api/                # Directorio principal de la aplicación
-├── static/            # Archivos estáticos
-├── templates/         # Plantillas HTML
-├── vibrosoft/         # Configuración del proyecto
-├── manage.py          # Script de gestión de Django
-└── requirements.txt   # Dependencias del proyecto
+.
+├── api/                # App Django para la API REST de ingesta de datos.
+├── vibrotech/          # App Django principal que gestiona la lógica web y la interacción con dispositivos.
+├── vibrosoft/          # Configuración del proyecto Django.
+├── templates/          # Plantillas HTML para la interfaz web.
+├── static/             # Archivos estáticos (CSS, JS, Bootstrap).
+├── requirements.txt    # Dependencias de Python.
+└── manage.py           # Utilidad de línea de comandos de Django.
 ```
 
-## Contribuciones 
+## 🔌 Endpoints de la API
 
-¡Las contribuciones, problemas y solicitudes de funciones son bienvenidas!
+La API está diseñada para ser consumida por los dispositivos remotos.
 
----
-Hecho con  usando Django y Python
+*   `POST /api/datetime/`: Crea un nuevo registro de fecha y hora en la base de datos.
+*   `GET /api/datetime/`: Obtiene todos los registros de tiempo.
+*   `GET /api/obtener-fecha-hora/`: Devuelve la fecha y hora actual del servidor en formato JSON.
