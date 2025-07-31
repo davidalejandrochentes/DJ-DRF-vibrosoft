@@ -39,6 +39,23 @@ El proyecto fue presentado y reconocido en la **Convención Científica Internac
 *   **Comunicación HTTP**: Biblioteca `requests` para interactuar con los dispositivos.
 *   **Admin**: `django-jazzmin` para una experiencia de administración mejorada.
 
+### 🛠️ Tecnologías Utilizadas
+
+*   **Backend:**
+    *   ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
+    *   ![Django](https://img.shields.io/badge/Django-5.1-092E20?style=for-the-badge&logo=django&logoColor=white)
+    *   ![Django REST Framework](https://img.shields.io/badge/DRF-3.15-9A0000?style=for-the-badge&logo=django&logoColor=white)
+*   **Frontend:**
+    *   ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+    *   ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+    *   ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+*   **Base de Datos:**
+    *   ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white) (Desarrollo)
+*   **Administración:**
+    *   ![Django Jazzmin](https://img.shields.io/badge/Django_Jazzmin-3.0-5C2D91?style=for-the-badge)
+*   **API Documentation:**
+    *   ![CoreAPI](https://img.shields.io/badge/CoreAPI-0.0.4-5C2D91?style=for-the-badge)
+
 ## ⚙️ Instalación y Puesta en Marcha
 
 Sigue estos pasos para tener una copia local del proyecto funcionando.
